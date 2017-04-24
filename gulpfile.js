@@ -1,8 +1,14 @@
 var gulp = require ('gulp'),
-    gutil = require ('gulp-util');
+    gutil = require ('gulp-util'),
+    coffee = require ('gulp-coffee'),
+    coffeesources = ('components/coffee/tagline.coffee');
 
-gulp.task ('log', function (){
-    gutil.log('Workflows rule');
+gulp.task ('coffee', function (){
+    gulp.src(coffeesources)
+    .pipe(coffee({bare:true})
+          .on('error', gutil.log))
+        .pipe(gulp.dest('components/scripts'))
+    
 });
 
     
